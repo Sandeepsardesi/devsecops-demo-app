@@ -1,0 +1,28 @@
+---
+pipeline:
+  name: devsecops-pipeline
+  identifier: devsecopspipeline
+  projectIdentifier: devsecopsdemo
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.harnessImage
+              namespace: default
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Build Docker
+                  identifier: build_docker
+                  spec:
+                    shell: Sh
+                    command: |
+                      docker build -t devsecops-demo .
