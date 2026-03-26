@@ -1,12 +1,9 @@
 from flask import Flask
-import os
-
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    version = os.getenv("VERSION", "v1")
-    return f"DevSecOps Final Project Working 🚀 - {version}"
+    return "DevSecOps Aspire learning journey Final Project Working 🚀 - V2"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
