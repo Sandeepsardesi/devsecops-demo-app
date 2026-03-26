@@ -1,15 +1,12 @@
 from flask import Flask
-import socket
+import os
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello():
-    return "DevSecOps Final Project Working 🚀"
+@app.route("/")
+def home():
+    version = os.getenv("VERSION", "v1")
+    return f"DevSecOps Final Project Working 🚀 - {version}"
 
-@app.route('/health')
-def health():
-    return "OK"
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
